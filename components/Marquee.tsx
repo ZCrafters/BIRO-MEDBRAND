@@ -18,7 +18,7 @@ export default function Marquee() {
   return (
     <div
       aria-hidden="true"
-      className="marquee-mask overflow-hidden border-y border-black/10 bg-[#f0eefa] py-3"
+      className="marquee-mask overflow-hidden border-y border-black/10 bg-[#fbe2ee] py-3"
     >
       <div className="marquee-track">
         {row}

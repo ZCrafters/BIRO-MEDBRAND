@@ -123,7 +123,8 @@
     gap: 36px;
     min-height: 100svh;
     padding: 40px 24px 0;
-    background: var(--background);
+    background: #fdf2f7;
+    background: linear-gradient(165deg, #fdf2f7 0%, #fbdfea 55%, #f7d1e0 100%);
   }
   .logo {
     position: static;

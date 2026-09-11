@@ -30,7 +30,7 @@ function Card({
       ref={ref}
       onPointerMove={onMove}
       className={cn(
-        "spotlight pressable rounded-3xl border border-black/10 bg-[#f7f8fa] p-6 shadow-[0_1px_0_rgba(0,0,0,0.04)] transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg md:p-7",
+        "spotlight pressable rounded-3xl border border-black/10 bg-[#fff7fa] p-6 shadow-[0_1px_0_rgba(0,0,0,0.04)] transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg md:p-7",
         className
       )}
     >
@@ -41,7 +41,7 @@ function Card({
 
 function CardTag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex h-[30px] items-center whitespace-nowrap rounded-full bg-[#080909] px-3 text-sm text-[#f7f8fa]">
+    <span className="inline-flex h-[30px] items-center whitespace-nowrap rounded-full bg-[#080909] px-3 text-sm text-[#fff7fa]">
       {children}
     </span>
   );
@@ -58,7 +58,7 @@ function CardTitle({ children }: { children: React.ReactNode }) {
 function OpenButton({ href, label }: { href: string; label: string }) {
   if (href === "#") {
     return (
-      <span className="mt-5 inline-flex h-11 cursor-not-allowed items-center rounded-full border border-dashed border-black/25 bg-[#f7f8fa] px-5 text-[15px] font-medium opacity-50">
+      <span className="mt-5 inline-flex h-11 cursor-not-allowed items-center rounded-full border border-dashed border-black/25 bg-[#fff7fa] px-5 text-[15px] font-medium opacity-50">
         Link belum tersedia
       </span>
     );
@@ -173,11 +173,11 @@ function HeroBlobs() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       <motion.div
-        className="blob left-[12%] top-[8%] h-[26vw] w-[26vw] bg-[#c7d0ee]"
+        className="blob left-[12%] top-[8%] h-[26vw] w-[26vw] bg-[#f9c6dd]"
         style={{ x: mx, y: my }}
       />
       <motion.div
-        className="blob left-[68%] top-[34%] h-[30vw] w-[30vw] bg-[#dcd2ef]"
+        className="blob left-[68%] top-[34%] h-[30vw] w-[30vw] bg-[#f3b8d0]"
         style={{ x: mx, y: my, rotate: 0 }}
       />
     </div>
@@ -191,7 +191,7 @@ export default function MedbrandSections() {
       <header className="relative overflow-hidden px-6 pt-20 pb-14 md:px-[8.65vw] md:pt-28 md:pb-20">
         <HeroBlobs />
         <div className="relative">
-          <span className="enter enter-1 inline-flex h-[30px] items-center rounded-full bg-[#f7f8fa] px-3 text-sm">
+          <span className="enter enter-1 inline-flex h-[30px] items-center rounded-full bg-[#fff7fa] px-3 text-sm">
             Paguyuban Karya Salemba Empat • IPB
           </span>
           <h1 className="font-grotesk enter enter-2 mt-5 max-w-4xl text-[clamp(32px,6vw,72px)] font-bold leading-[1.05] tracking-tight">
@@ -215,7 +215,7 @@ export default function MedbrandSections() {
             </a>
             <a
               href="#kotak"
-              className="pressable inline-flex h-12 items-center rounded-full border border-black/15 bg-[#f7f8fa] px-6 text-[15px] font-medium"
+              className="pressable inline-flex h-12 items-center rounded-full border border-black/15 bg-[#fff7fa] px-6 text-[15px] font-medium"
             >
               Lompat ke 5 kotak
             </a>
@@ -229,8 +229,8 @@ export default function MedbrandSections() {
       {/* ---------- ABOUT US ---------- */}
       <section id="about" className="scroll-mt-20 px-6 pt-14 md:px-[8.65vw] md:pt-20">
         <Reveal>
-          <div className="rounded-3xl border border-black/10 bg-[#f0eefa] p-6 md:p-10">
-            <span className="inline-flex h-[30px] items-center rounded-full bg-[#f7f8fa] px-3 text-sm">
+          <div className="rounded-3xl border border-black/10 bg-[#fbe2ee] p-6 md:p-10">
+            <span className="inline-flex h-[30px] items-center rounded-full bg-[#fff7fa] px-3 text-sm">
               about us
             </span>
             <h2 className="font-grotesk mt-4 text-[clamp(24px,3.4vw,40px)] font-bold leading-tight">
@@ -251,7 +251,7 @@ export default function MedbrandSections() {
               ].map(([t, d]) => (
                 <div
                   key={t}
-                  className="rounded-2xl bg-[#f7f8fa] p-4 text-[14px] leading-snug"
+                  className="rounded-2xl bg-[#fff7fa] p-4 text-[14px] leading-snug"
                 >
                   <div className="font-grotesk text-[16px] font-bold">{t}</div>
                   <div className="mt-1 opacity-70">{d}</div>
@@ -294,7 +294,7 @@ export default function MedbrandSections() {
                 {MEMBERS.map((m) => (
                   <li
                     key={m.name}
-                    className="rounded-2xl border border-black/10 bg-white/60 p-3"
+                    className="rounded-2xl border border-black/10 bg-white/70 p-3"
                   >
                     <div className="font-grotesk flex h-9 w-9 items-center justify-center rounded-full bg-[#080909] text-sm font-bold text-white">
                       {m.initials}
