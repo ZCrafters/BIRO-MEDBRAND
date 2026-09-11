@@ -1,0 +1,231 @@
+/* Port 1:1 dari studio_footer_page.html — tidak ada yang dihilangkan, hanya di-scope ke module */
+.footer {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 6.54vw;
+  isolation: isolate;
+  overflow: hidden;
+}
+.jobs {
+  margin-left: 8.65vw;
+  width: 25vw;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 100px;
+  background: #f7f8fa;
+  padding: 0.39vw 0.61vw;
+  font-size: 0.88vw;
+  line-height: 1.2;
+  height: 1.9vw;
+  white-space: nowrap;
+}
+.headline {
+  font-family: 'Epilogue', Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1.66vw;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+.jobTitle {
+  display: block;
+  margin-top: 1.45vw;
+}
+.footerNav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.93vw;
+  margin-top: 1.3vw;
+  font-size: 1.075vw;
+  line-height: 1.35;
+}
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  padding-top: 5vw;
+  pointer-events: none;
+}
+.logoText {
+  display: block;
+  font-family: var(--font-grotesk), Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(44px, 6.5vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: wordmark-in 400ms var(--ease-out) 120ms forwards;
+}
+@keyframes wordmark-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.contact {
+  position: absolute;
+  left: 74.3vw;
+  top: 6.54vw;
+}
+.contactLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1.45vw;
+  white-space: nowrap;
+}
+.note {
+  margin: 1.05vw 0 0;
+  font-size: 0.733vw;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1.43vw;
+  margin-top: 1.61vw;
+}
+.socials span,
+.socials img {
+  display: block;
+  width: 1.71vw;
+  height: 1.71vw;
+}
+.footerBackground {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.footerBackground video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 700px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    min-height: 100svh;
+    padding: 40px 24px 0;
+    background: var(--background);
+  }
+  .logo {
+    position: static;
+    order: 0;
+    align-self: center;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .logoText {
+    font-size: clamp(40px, 12vw, 64px);
+  }
+  .jobs {
+    order: 1;
+    margin: 0;
+    width: 100%;
+  }
+  .tag {
+    height: 30px;
+    padding: 6px 11px;
+    font-size: 14px;
+  }
+  .headline {
+    font-size: clamp(22px, 6.3vw, 30px);
+    line-height: 1.25;
+  }
+  .jobTitle,
+  .contactLinks {
+    margin-top: 19px;
+  }
+  .footerNav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 24px;
+    margin-top: 20px;
+    font-size: 17px;
+    line-height: 1.4;
+  }
+  .footerNav span {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .contact {
+    position: static;
+    order: 2;
+    width: 100%;
+  }
+  .contactLinks {
+    gap: 4px;
+    white-space: normal;
+  }
+  .note {
+    max-width: 34ch;
+    margin: 16px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: normal;
+  }
+  .socials {
+    gap: 18px;
+    margin-top: 20px;
+  }
+  .socials span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+  }
+  .socials img {
+    width: 30px;
+    height: 30px;
+  }
+  .socials span:first-child {
+    margin-left: -7px;
+  }
+  .footerBackground {
+    position: relative;
+    inset: auto;
+    order: 3;
+    z-index: auto;
+    flex: none;
+    align-self: center;
+    width: calc(100% + 48px);
+    aspect-ratio: 4/3;
+    margin-top: -16px;
+  }
+  .footerBackground video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logoText {
+    animation: none;
+    opacity: 1;
+  }
+}

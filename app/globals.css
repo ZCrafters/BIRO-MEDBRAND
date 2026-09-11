@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+/* ---- Preserved design tokens from studio_footer_page.html ---- */
+@font-face {
+  font-family: 'DM Sans';
+  src: url('https://cdn.prod.website-files.com/683703490bc01e1b8c052e06/68370ddd1dd328d7914d6512_DMSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Epilogue';
+  src: url('https://cdn.prod.website-files.com/683703490bc01e1b8c052e06/68370ddd06d737200122a835_Epilogue-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #dfe4f2;
+  --foreground: #080909;
+  --card: #f7f8fa;
+  --lavender: #f0eefa;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'DM Sans', Arial, sans-serif;
+}
+
+.font-headline {
+  font-family: 'Epilogue', Arial, sans-serif;
+  font-weight: 900;
+}
+
+.font-grotesk {
+  font-family: var(--font-grotesk), Arial, sans-serif;
+}
+
+/* subtle press feedback (emil-design-eng) */
+.pressable {
+  transition: transform 160ms var(--ease-out);
+}
+.pressable:active {
+  transform: scale(0.97);
+}
+
+/* ---------- ENTRANCE STAGGER (CSS keyframes: off-main-thread) ---------- */
+.enter {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: enter-up 300ms var(--ease-out) forwards;
+}
+.enter-1 { animation-delay: 0ms; }
+.enter-2 { animation-delay: 60ms; }
+.enter-3 { animation-delay: 120ms; }
+.enter-4 { animation-delay: 180ms; }
+.enter-5 { animation-delay: 240ms; }
+.enter-6 { animation-delay: 300ms; }
+
+@keyframes enter-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- SCROLL REVEAL (fires once via IntersectionObserver) ---------- */
+.reveal {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 600ms var(--ease-in-out);
+}
+.reveal[data-visible="true"] {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ---------- MARQUEE ---------- */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+/* ---------- CARD SPOTLIGHT (set --mx/--my on the card element itself) ---------- */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 250ms var(--ease-out);
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(8, 9, 9, 0.06),
+    transparent 65%
+  );
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+}
+
+/* ---------- HERO BLOBS ---------- */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.55;
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .enter {
+    animation: fade-in 200ms ease forwards;
+  }
+  @keyframes fade-in {
+    to { opacity: 1; }
+  }
+  .marquee-track {
+    animation: none;
+  }
+  .reveal {
+    clip-path: none;
+    transition: none;
+  }
+  .blob {
+    display: none;
+  }
+}
