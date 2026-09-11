@@ -2,7 +2,12 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 
-/** Scroll reveal: clip-path terbuka saat masuk viewport — sekali saja. */
+/**
+ * Scroll reveal: elemen masuk viewport → fade-up.
+ * Pakai opacity/transform (bukan clip-path) karena IntersectionObserver
+ * memperhitungkan clip-path dalam geometry — clip 100% = dianggap tidak
+ * intersecting → deadlock (kartu tak pernah muncul).
+ */
 export default function Reveal({
   children,
   className,
@@ -18,12 +23,14 @@ export default function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (!("IntersectionObserver" in window)) {
+      el.dataset.visible = "true";
+      return;
+    }
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          window.setTimeout(() => {
-            el.dataset.visible = "true";
-          }, delay);
+          el.dataset.visible = "true";
           io.disconnect();
         }
       },
@@ -31,10 +38,15 @@ export default function Reveal({
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [delay]);
+  }, []);
 
   return (
-    <div ref={ref} className={`reveal ${className ?? ""}`}>
+    <div
+      ref={ref}
+      data-visible="false"
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`reveal ${className ?? ""}`}
+    >
       {children}
     </div>
   );

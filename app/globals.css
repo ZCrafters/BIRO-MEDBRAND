@@ -75,11 +75,15 @@ body {
 
 /* ---------- SCROLL REVEAL (fires once via IntersectionObserver) ---------- */
 .reveal {
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 600ms var(--ease-in-out);
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  transition:
+    opacity 600ms var(--ease-out),
+    transform 600ms var(--ease-out);
 }
 .reveal[data-visible="true"] {
-  clip-path: inset(0 0 0 0);
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 /* ---------- MARQUEE ---------- */
@@ -146,8 +150,12 @@ body {
     animation: none;
   }
   .reveal {
-    clip-path: none;
-    transition: none;
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
   }
   .blob {
     display: none;
